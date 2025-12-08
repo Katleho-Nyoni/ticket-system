@@ -11,6 +11,7 @@ const routes = [{
   element: <Navigation />
   },{
   path: '/',
+  // index: true,
   element: <HomePage />
   },{
     path: '/admin/login',

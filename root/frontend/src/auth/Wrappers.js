@@ -17,4 +17,16 @@ export const signOut = async () => {
     }
 }
 
+export const addAuthListerner = (callback) => {
+    const onChange = (user) => {
+        if (user) {
+            callback({});
+        } else {
+            callback(null);
+        }
+    }
+
+    return firebase.auth().onStateChanged(onChange);
+}
+
 

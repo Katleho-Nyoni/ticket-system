@@ -1,9 +1,18 @@
 import express from 'express';
+import cors from 'cors';
 // import rate from 'express-rate-limit';
 
 const app = express();
 
+app.use(cors({
+    origin: 'http://localhost:5173',
+    credentials: true,
+}));
+
 app.use(express.json());
+
+
+
 
 const API_URL = 'https://orangevalleycaa.org/api/videos';
 

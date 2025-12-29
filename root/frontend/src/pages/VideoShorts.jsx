@@ -25,8 +25,8 @@ export default function VideoShortsApp(){
         <TransparentNav />
             <div className=' flex flex-col gap-4'>
                 <h1 className='font-extrabold text-5xl m-10'>Video Shorts</h1>
-                {/* {error && <p className='text-red-600'>{error}</p>} */}
-                {/* <div className='grid grid-cols-3 gap-10'>
+                {error && <p className='text-red-600 text-xl'>{error}</p>}
+                <div className='grid grid-cols-3 gap-10'>
                     {data.map((video) => (
                         <div key={video.id} >
                         <video src={video.video_url} height={350} 
@@ -35,7 +35,7 @@ export default function VideoShortsApp(){
                         <h2 className='font-bold mt-2'>{video.name} </h2>
                         </div>
                     ))}
-                </div> */}
+                </div>
             </div>
       </div>
     </>

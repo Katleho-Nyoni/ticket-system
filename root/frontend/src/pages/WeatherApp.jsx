@@ -18,7 +18,7 @@ export default function WeatherApp() {
 
   return (
     <>
-      <div id="app">
+      <div className='bg-[url(/src/assets/weather-landscape.webp)] bg-center bg-cover'>
         <div id="search" className='flex flex-row justify-center p-4'>
           <input type="search" value={Location} onKeyDown={searchLocation} onChange={event => setLocation(event.target.value)} onClick={searchLocation} placeholder='Enter Location'
           className='bg-white text-gray-500 py-2'/>

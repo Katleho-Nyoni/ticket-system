@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "The backend of this system will include: - Authentication - Database integration - Admin dashboard",
   "main": "index.js",
-  "devDependencies": {
-    "nodemon": "^3.1.11"
-  },
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
@@ -20,5 +17,8 @@
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
     "express-rate-limiter": "^1.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
   }
 }

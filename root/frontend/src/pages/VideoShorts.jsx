@@ -8,7 +8,7 @@ export default function VideoShortsApp(){
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('/API/video');
+        const response = await fetch('https://orangevalleycaa.org/api/videos');
         const results = await response.json();
         setData(results);
         console.log(results);

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import social from '../assets/social.webp';
+import social from '../assets/weather-landscape.webp';
 
 
 export default function HomePage() {

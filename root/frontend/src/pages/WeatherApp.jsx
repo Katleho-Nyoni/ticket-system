@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import axios from 'axios'
+import { TransparentNav } from './Nav';
 
 export default function WeatherApp() {
   const [Location,setLocation] = useState("")
@@ -18,10 +19,11 @@ export default function WeatherApp() {
 
   return (
     <>
-      <div className='bg-[url(/src/assets/weather-landscape.webp)] bg-center bg-cover'>
+        <TransparentNav />
+      <div className='h-screen w-auto bg-[url(/src/assets/landscape.webp)] bg-center bg-cover'>
         <div id="search" className='flex flex-row justify-center p-4'>
           <input type="search" value={Location} onKeyDown={searchLocation} onChange={event => setLocation(event.target.value)} onClick={searchLocation} placeholder='Enter Location'
-          className='bg-white text-gray-500 py-2'/>
+          className='bg-white text-gray-500 py-2' />
           <button type="submit" className='p-2 bg-blue-700 font-bold hover:bg-blue-800' onClick={searchLocation}>Search</button>
         </div>
         <div id="container" className='m-auto h-96 top-1/10 p-12 text-black relative flex flex-col justify-between'>

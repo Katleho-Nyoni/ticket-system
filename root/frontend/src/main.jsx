@@ -1,11 +1,10 @@
-import * as firebase from "firebase/app";
 import "firebase/analytics";
 import "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import './index.css'
+import './styles/index.css'
 import App from './App.jsx'
 
 const firebaseConfig = {

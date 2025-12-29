@@ -8,7 +8,7 @@ import { PiSignIn } from "react-icons/pi";
 export default function Navigation() {
   return (
     <>
-      <div className="gap-14">
+      <div className="gap-14 bg-slate-800 text-white h-screen w-80 left-0">
         <nav className="flex flex-col border-r-amber-600 gap-12">
             <Link to="/" className="font-bold flex flex-row gap-4"> <FcHome className="size-6"/> <span>Home</span> </Link>
             <Link to="/notifications" className="font-bold flex flex-row gap-4"> <FcAbout className="size-6" /> <span>Notifications</span> </Link>

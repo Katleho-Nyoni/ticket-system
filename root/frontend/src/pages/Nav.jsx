@@ -19,3 +19,17 @@ export default function Navigation() {
     </>
   );
 }
+
+export function TransparentNav() {
+
+  return(
+    <>
+      <div className="bg-transparent h-20 w-full flex flex-row justify-between items-center p-4 absolute top-0 left-0">
+        <nav>
+          <Link to='/' > <button className="home-btn">Home</button> </Link>
+          <button className="sign-out-btn">Sign Out</button>
+        </nav>
+      </div>
+    </>
+  );
+}

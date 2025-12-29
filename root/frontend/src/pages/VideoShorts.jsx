@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { TransparentNav } from './Nav';
 
 export default function VideoShortsApp(){
  const [data, setData] = useState([]);
@@ -21,6 +22,7 @@ export default function VideoShortsApp(){
   return (
     <>
       <div className='w-screen h-screen bg-[url(/src/assets/video.webp)] bg-center bg-cover bg-no-repeat'>
+        <TransparentNav />
             <div className=' flex flex-col gap-4'>
                 <h1 className='font-extrabold text-5xl m-10'>Video Shorts</h1>
                 {/* {error && <p className='text-red-600'>{error}</p>} */}

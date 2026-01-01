@@ -50,3 +50,21 @@
   rounded-full hover:bg-green-700 cursor-pointer;
 }
 
+.video-loader {
+  @apply h-[200px] w-[350px] relative overflow-hidden bg-gray-300 rounded-md;
+}
+
+.loading-skeleton {
+  @apply absolute inset-0 -translate-x-full bg-gradient-to-r from-gray-300 via-gray-100
+  to-gray-300 animate-[shimmer_1.2s_infinite];
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+

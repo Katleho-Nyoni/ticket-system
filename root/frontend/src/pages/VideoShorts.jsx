@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
+import { useNavigation } from 'react-router-dom';
 import { TransparentNav } from './Nav';
+
+
 
 export default function VideoShortsApp(){
  const [data, setData] = useState([]);
@@ -8,7 +11,7 @@ export default function VideoShortsApp(){
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://orangevalleycaa.org/api/videos');
+        const response = await fetch('http://localhost:3000/API/video');
         const results = await response.json();
         setData(results);
         console.log(results);
@@ -19,11 +22,14 @@ export default function VideoShortsApp(){
     fetchData();
   },[]);
 
-  return (
-    <>
-      <div className='w-screen h-screen bg-[url(/src/assets/video.webp)] bg-center bg-cover bg-no-repeat'>
+
+  const VideoShortsData = () => {
+
+    return (
+   <>
+      <div className='w-screen h-max-[full] bg-[url(/src/assets/video.webp)] bg-center bg-cover bg-no-repeat'>
         <TransparentNav />
-            <div className=' flex flex-col gap-4'>
+            <div className=' flex flex-col gap-4 mb-6'>
                 <h1 className='font-extrabold text-5xl m-10'>Video Shorts</h1>
                 {error && <p className='text-red-600 text-xl'>{error}</p>}
                 <div className='grid grid-cols-3 gap-10'>
@@ -38,6 +44,17 @@ export default function VideoShortsApp(){
                 </div>
             </div>
       </div>
+    </>
+    );
+  }
+
+  const navigation = useNavigation()
+
+  const isLoading = navigation.state === "loading"
+
+  return (
+    <>
+      {isLoading ? <VideoShortsLoader /> : <VideoShortsData />}
     </>
   )
 }

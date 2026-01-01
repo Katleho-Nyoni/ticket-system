@@ -1,35 +1,51 @@
 import { useState } from 'react'
 import axios from 'axios'
 import { TransparentNav } from './Nav';
+import { useEffect } from 'react';
 
 export default function WeatherApp() {
-  const [Location,setLocation] = useState("")
-  const [data, setData] = useState([])
+  const [location,setLocation] = useState("")
+  const [error, setError] = useState("")
+  const [data, setData] = useState({})
 
-  const Api_Key = import.meta.env.VITE_API_Key;
-
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${Location}&appid=${Api_Key}&units=metric`
   // console.log(url)
-  const searchLocation = (event) => {
-    if (event.key === 'Enter' || event.type === 'click'){
-     axios.get(url).then(response => {setData(response.data)})
-    }    
-    // setLocation('')
+  const searchLocation = async (query) => {
+      try {
+
+        const URL = query
+        ? `http://localhost:3000/API/weather?location=${query}`
+        : `http://localhost:3000/API/weather`;
+
+        const response = await axios.get(URL);
+        setData(response.data);
+        setError("");
+        console.error(error.message);
+      } catch (error) {
+        setError("Error fetching weather data");
+        console.error(error.message);
+        }
   }
+
+  useEffect(() => {
+    searchLocation();
+    // alert("The default location is based on your IP address. ");
+  },[]);
+  
 
   return (
     <>
-        <TransparentNav />
       <div className='h-screen w-auto bg-[url(/src/assets/landscape.webp)] bg-center bg-cover'>
-        <div id="search" className='flex flex-row justify-center p-4'>
-          <input type="search" value={Location} onKeyDown={searchLocation} onChange={event => setLocation(event.target.value)} placeholder='Enter Location'
-          className='bg-white text-gray-500 py-2' />
-          <button type="submit" className='p-2 bg-blue-700 font-bold hover:bg-blue-800' onClick={searchLocation}>Search</button>
+        <div id="search" className='flex flex-row justify-center p-4 '>
+          <input type="search" value={location} onChange={e => setLocation(e.target.value)} placeholder='Enter Location'
+          className='bg-white text-gray-500 py-2 ' />
+          <button type="submit" className='p-2 bg-blue-700 font-bold hover:bg-blue-800' 
+          onClick={() => searchLocation(location)}>Search</button>
         </div>
+        {error && <p className='text-red-600'>{error}</p> }
         <div id="container" className='m-auto h-96 top-1/10 p-12 text-black relative flex flex-col justify-between'>
           <div id="top">
             <div id="location">
-              {data.name? <p className='font-bold text-2xl'>{data.name} </p> : null}
+              {data.name? <p className='font-bold text-6xl'>{data.name} </p> : <p className='font-bold text-5xl'>Welcome</p> }
             </div>
             <div id="temp">
               {data.main? <h1  className='font-extrabold text-3xl'>{data.main.temp}°C</h1> : null}
@@ -55,6 +71,6 @@ export default function WeatherApp() {
         </div>
       </div>
     </>
-  )
+  );
 }
 

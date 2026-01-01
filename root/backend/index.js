@@ -15,24 +15,44 @@ app.use(cors({
 
 app.use(express.json());
 
-const WEATHER_CONDITION_API_KEY = process.env.WEATHER_API_KEY;
 
-const WEATHER_API_URL = `https://api.openweathermap.org/data/2.5/weather?q=london&appid=${WEATHER_CONDITION_API_KEY}&units=metric`;
+// console.log(WEATHER_CONDITION_API_KEY);
 
 app.get('/API/weather', async (req, res) => {
+
+    const WEATHER_CONDITION_API_KEY = process.env.WEATHER_API_KEY;
+
+    let locationQuery = req.query.location ;
+
+    if (!locationQuery) {
+        try {
+            const response = await fetch('http://ip-api.com/json');
+            const data = await response.json();
+            locationQuery = data.city;
+
+        } catch (error) {
+            console.error("Failed to fetch location from IP");
+        }
+    }
+
+    const WEATHER_API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${locationQuery}&appid=${WEATHER_CONDITION_API_KEY}&units=metric`;
+
     try {
         const results = await fetch(WEATHER_API_URL);
         const data = await results.json();
         res.json(data);
+        console.log(data);
     } catch (error) {
         console.error(error.message);
     }
 })
 
 
-const VIDEO_API_URL = 'https://orangevalleycaa.org/api/videos';
 
 app.get('/API/video', async (req,res) => {
+
+    const VIDEO_API_URL = 'https://orangevalleycaa.org/api/videos';
+
     try {
          const response =await fetch(VIDEO_API_URL);
          const data = await response.json();

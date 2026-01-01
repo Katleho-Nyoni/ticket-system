@@ -1,5 +1,6 @@
 # TICKET-LOG SYSTEM
-[](./app.png)
+
+<img src="./app.png" />
 
 A tool for an internal team to use to require help with the work device from the IT department.
 

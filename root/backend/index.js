@@ -17,7 +17,7 @@ app.use(express.json());
 
 const WEATHER_CONDITION_API_KEY = process.env.WEATHER_API_KEY;
 
-const WEATHER_API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${Location}&appid=${WEATHER_CONDITION_API_KEY}&units=metric`;
+const WEATHER_API_URL = `https://api.openweathermap.org/data/2.5/weather?q=london&appid=${WEATHER_CONDITION_API_KEY}&units=metric`;
 
 app.get('/API/weather', async (req, res) => {
     try {

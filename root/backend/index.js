@@ -15,12 +15,6 @@ app.use(cors({
 
 app.use(express.json());
 
-app.get('/API/weather/city', async (req, res) => {
-    const OPENWEATHERMAP_CITY_API_KEY = process.env.CITY_API_KEY;
-    const CITY_API_URL = await `https://api.openweathermap.org/geo/1.0/direct?q=${locationQuery}&limit=10&appid=${OPENWEATHERMAP_CITY_API_KEY}&units=metric`;
-    
-})
-
 app.get('/API/weather', async (req, res) => {
 
     const WEATHER_CONDITION_API_KEY = process.env.WEATHER_API_KEY;

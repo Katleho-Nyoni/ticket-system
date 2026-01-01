@@ -1,8 +1,12 @@
+import { Outlet } from "react-router-dom";
+import Navigation from "./Nav";
+
 export default function TicketSystem(){
 
     return(
         <>
-            <h1>Ticket System</h1>
+            <Outlet />   
+            <Navigation />
         </>
     );
 }

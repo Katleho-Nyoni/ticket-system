@@ -4,7 +4,7 @@ export default function VideoShortsLoader(){
 
     return(
         <>
-            <div className="flex justify-center items-center m-10 p-8">
+            <div className="flex justify-center items-center  h-screen w-screen">
               <DNA 
                 visible={true}
                 height="120"

@@ -20,7 +20,7 @@ const routes = [{
   path: '/weather-app', element: <WeatherApp /> },{
   path: '/social-media', element: <SocialMediaApp /> },{
   path: '/ticket-system', element: <TicketSystem /> },{
-  path: '/video-shorts', loader: VideoShortsLoader , element: <VideoShorts /> }
+  path: '/video-shorts' , element: <VideoShorts />, hydrateFallback: VideoShortsLoader }
 ];
 
 const router = createBrowserRouter(routes);

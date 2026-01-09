@@ -69,15 +69,15 @@ export default function WeatherApp() {
             <div id="button" className='flex flex-row justify-between p-8 border border-gray-400 rounded-xl mt-50 bg-gray-400/40'>
               <div id="feels">
                 {data.main ? <p className='font-bold text-xl'>{data.main.feels_like}°C</p> : null}
-                <p className='font-bold text-sl'>Feels like</p>
+                <p className='font-bold text-sl text-gray-700'>Feels like</p>
               </div>
               <div id="humidity">
                 {data.main ? <p className='font-bold text-xl'>{data.main.humidity}%</p> : null}
-                <p className='font-bold text-sl'>Humidity</p>
+                <p className='font-bold text-sl text-gray-700'>Humidity</p>
               </div>
               <div id="wind">
                 {data.wind ? <p className='font-bold text-xl'>{data.wind.speed} MPH</p> : null}
-                <p className='font-bold text-sl'>Wind Speed</p>
+                <p className='font-bold text-sl text-gray-700'>Wind Speed</p>
               </div>
             </div>
           </div>

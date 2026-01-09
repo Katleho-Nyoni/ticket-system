@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { RotatingLines } from 'react-loader-spinner'
 
 export default function WeatherApp() {
   const [location,setLocation] = useState("")
@@ -51,7 +52,13 @@ export default function WeatherApp() {
         <div id="container" className='m-auto h-96 top-1/10 p-12 text-black relative flex flex-col justify-between'>
           <div id="top">
             <div id="location">
-              {data.name? <p className='font-bold text-6xl'>{data.name} </p> : <p className='font-bold text-5xl'>Welcome</p> }
+              {data.name? <p className='font-bold text-6xl'>{data.name} </p> : <div className='flex flex-col justify-center items-center'>
+                <>
+                  <p className='font-bold text-5xl mb-5'>Welcome</p>
+                  <RotatingLines visible={true} height={80} width={80} color='blue' />
+                </>
+
+              </div> }
             </div>
             <div id="temp">
               {data.main? <h1  className='font-extrabold text-3xl'>{data.main.temp}°C</h1> : null}

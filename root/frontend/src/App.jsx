@@ -7,20 +7,21 @@ import SignInPage from './pages/signIn';
 import TicketForm from './pages/TicketForm';
 import WeatherApp from './pages/WeatherApp';
 import SocialMediaApp from './pages/SocialMediaApp';
-import TicketSystem from './pages/TicketSystem';
+import LayOut from './pages/TicketSystem';
 import VideoShorts from './pages/VideoShorts';
 import VideoShortsLoader from './loaders/VideoShortsLoader';
 
 const routes = [{
-  path: '/', element: <Navigation /> },{
-  path: '/', index: true, element: <HomePage /> },{
-  path: '/admin/login', element: <AdminDashboardPage /> },{
   path: 'user/login', element: <SignInPage /> },{
-  path: '/log/ticket', element: <TicketForm /> },{
+  path: '/', element: <HomePage /> },{
   path: '/weather-app', element: <WeatherApp /> },{
   path: '/social-media', element: <SocialMediaApp /> },{
-  path: '/ticket-system', element: <TicketSystem /> },{
-  path: '/video-shorts' , element: <VideoShorts />, hydrateFallback: VideoShortsLoader }
+  path: '/video-shorts' , element: <VideoShorts />, hydrateFallback: VideoShortsLoader },{
+  path: '/ticket-system', element: <LayOut />,
+  children: [{
+  path: '/admin/login', element: <AdminDashboardPage /> },{
+  path: '/log/ticket', element: <TicketForm /> }
+  ]}
 ];
 
 const router = createBrowserRouter(routes);

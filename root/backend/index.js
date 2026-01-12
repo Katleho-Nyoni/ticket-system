@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 // import rate from 'express-rate-limit';
+import Ticket from './models/tickets.model';
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ app.use(cors({
 
 app.use(express.json());export default
 
+/* Weather App Endpoint */
 app.get('/API/weather', async (req, res) => {
 
     const WEATHER_CONDITION_API_KEY = process.env.WEATHER_API_KEY;
@@ -45,8 +47,7 @@ app.get('/API/weather', async (req, res) => {
     }
 })
 
-
-
+/* Video App Endpoint */
 app.get('/API/video', async (req,res) => {
 
     const VIDEO_API_URL = 'https://orangevalleycaa.org/api/videos';
@@ -64,11 +65,18 @@ app.listen(3000, () => {
     console.log('Server is running on port 30000');
 });
 
+/* Ticket Management System Endpoints */
+app.route('/api/ts/tickets')
+.post()
+// .get()
+// .put()
+.delete();
+
 mongoose.connect(process.env.MONGO_URI)
 .then(() => {
   console.log("Connected to MongoDB");
-  app.listen(4144, () => {
-  console.log("Server is running on http://localhost:4144");
+  app.listen(30000, () => {
+  console.log("Server is running on http://localhost:30000");
   });
 })
 .catch((err) => {

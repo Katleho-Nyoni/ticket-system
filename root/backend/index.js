@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import mongoose from 'mongoose';
 // import rate from 'express-rate-limit';
 
 dotenv.config();
@@ -13,7 +14,7 @@ app.use(cors({
     // credentials: true,
 }));
 
-app.use(express.json());
+app.use(express.json());export default
 
 app.get('/API/weather', async (req, res) => {
 
@@ -62,3 +63,7 @@ app.get('/API/video', async (req,res) => {
 app.listen(3000, () => {
     console.log('Server is running on port 30000');
 });
+
+mongoose.connect()
+.then()
+.catch();

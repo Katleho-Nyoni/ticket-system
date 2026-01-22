@@ -12,17 +12,17 @@ import VideoShorts from './pages/VideoShorts';
 import VideoShortsLoader from './loaders/VideoShortsLoader';
 
 const routes = [{
-  path: 'user/login', element: <SignInPage /> },{
   path: '/', element: <HomePage /> },{
+  path: 'user/login', element: <SignInPage /> },{
   path: '/weather-app', element: <WeatherApp /> },{
   path: '/social-media', element: <SocialMediaApp /> },{
   path: '/video-shorts' , element: <VideoShorts />, hydrateFallback: VideoShortsLoader },{
   path: '/ticket-system', element: <LayOut />,
   children: [{
-  path: '/admin/login', element: <AdminDashboardPage /> },{
-  path: '/log/ticket', element: <TicketForm /> }
-  ]}
-];
+  path: 'admin/login', element: <AdminDashboardPage /> },{
+  path: 'log/ticket', element: <TicketForm /> }
+  ]
+}];
 
 const router = createBrowserRouter(routes);
 function App() {

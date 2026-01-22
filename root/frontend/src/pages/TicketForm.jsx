@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { Form } from "react-router-dom";
 
 export default function TicketForm(){
@@ -7,9 +7,9 @@ export default function TicketForm(){
     // [issueType, setIssueType] = useState("");
     // [description, setDescription] = useState("");
 
-    function SubmitForm(){
+    // function SubmitForm(){
 
-    }
+    // }
 
     return(
         <>
@@ -37,7 +37,7 @@ export default function TicketForm(){
                 
                     <textarea id="description" name="description" rows={6} placeholder="Leave brief description here..." required className="border border-blue-600 py-2 px-18 rounded"></textarea>
                 
-                    <button type="submit" onSubmit={SubmitForm} className="bg-blue-500 text-white font-bold py-2 px-4 w-auto self-center rounded cursor-pointer hover:bg-blue-600">Submit Ticket</button>
+                    <button type="submit" /*onSubmit={SubmitForm}*/ className="bg-blue-500 text-white font-bold py-2 px-4 w-auto self-center rounded cursor-pointer hover:bg-blue-600">Submit Ticket</button>
                 </Form>
             </div>
         </>

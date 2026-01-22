@@ -12,9 +12,8 @@ export default function Navigation() {
       <div className="gap-14 bg-slate-800 text-white h-screen w-80 left-0">
         <nav className="flex flex-col border-r-amber-600 gap-12">
             <Link to="/" className="font-bold flex flex-row gap-4"> <FcHome className="size-6"/> <span>Home</span> </Link>
-            <Link to="/notifications" className="font-bold flex flex-row gap-4"> <FcAbout className="size-6" /> <span>Notifications</span> </Link>
-            <Link to="/log/ticket" className="font-bold flex flex-row gap-4"> <FcAssistant className="size-6" /> <span>Log Ticket</span></Link>
-            <Link to="/admin/login" className="font-bold flex flex-row gap-4"> <RiAdminFill className="size-6" /> <span>As Admin</span></Link>
+            <Link to="/ticket-system/log/ticket" className="font-bold flex flex-row gap-4"> <FcAssistant className="size-6" /> <span>Log Ticket</span></Link>
+            <Link to="/ticket-system/admin/login" className="font-bold flex flex-row gap-4"> <RiAdminFill className="size-6" /> <span>As Admin</span></Link>
             <Link to="/user/login" className="font-bold flex flex-row gap-4"> <PiSignOut className="size-6" /> Sign Out</Link>
         </nav>
       </div>

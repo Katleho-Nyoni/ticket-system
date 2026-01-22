@@ -33,20 +33,20 @@ export default function SignInPage(){
 
     return(
         <>
-            <div className="flex flex-col gap-8  p-18 border border-indigo-700 rounded-xl">
-                <input type="email" name="email" id="email" placeholder="email"
+            <div className="flex flex-col justify-center items-center gap-8 h-screen w-screen p-18 shadow-md shadow-gray-500 rounded-xl">
+                <input type="email" name="email" id="email" placeholder="Email Address"
                  required value={email} onChange={handleEmailChange}
-                 className="h-10 border rounded" />
-                <input type="password" name="password" id="password" placeholder="password"
+                 className="h-12 w-120 border rounded-full" />
+                <input type="password" name="password" id="password" placeholder="Password"
                  required value={password} onChange={handlePasswordChange}
-                 className="h-10 border rounded"/>
+                 className="h-12 w-120 border rounded-full"/>
                  {error && <p className="text-red-600">{error}</p>}
                 <button type="submit" 
                  disabled={email && password ? false : true} onClick={handleEmailSignInOnClick}
-                 className="boder bg-blue-700 rounded-xl text-white font-extrabold cursor-pointer disabled:bg-gray-300 disabled:cursor-default"                
+                 className="h-12 w-120 boder bg-blue-700 rounded-full text-white font-extrabold cursor-pointer disabled:bg-gray-300 disabled:cursor-default"                
                 >Log In</button>
-                <p>Don't have an account? <Link to="/auth/sign-up" 
-                 className="text-blue-700">Create Account</Link></p>
+                {/* <p>Don't have an account? <Link to="/auth/sign-up"  */}
+                 {/* className="text-blue-700">Create Account</Link></p> */}
                 <GoogleButton onClick={handleGoogleSignInOnClick} /> 
             </div >
             

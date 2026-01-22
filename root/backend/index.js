@@ -1,9 +1,9 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import mongoose from 'mongoose';
+// import mongoose from 'mongoose';
 // import rate from 'express-rate-limit';
-import Ticket from './models/tickets.model';
+// import Ticket from './models/tickets.model';
 
 dotenv.config();
 
@@ -66,13 +66,13 @@ app.listen(3000, () => {
 });
 
 /* Ticket Management System Endpoints */
-app.route('/api/ts/tickets')
-.post()
+// app.route('/api/ts/tickets')
+// .post()
 // .get()
 // .put()
-.delete();
+// .delete();
 
-mongoose.connect(process.env.MONGO_URI)
+/* mongoose.connect(process.env.MONGO_URI)
 .then(() => {
   console.log("Connected to MongoDB");
   app.listen(30000, () => {
@@ -81,4 +81,4 @@ mongoose.connect(process.env.MONGO_URI)
 })
 .catch((err) => {
   console.error("Error connecting to MongoDB: ", err);
-});
+}); */

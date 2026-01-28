@@ -75,8 +75,8 @@ app.listen(3000, () => {
 /* mongoose.connect(process.env.MONGO_URI)
 .then(() => {
   console.log("Connected to MongoDB");
-  app.listen(30000, () => {
-  console.log("Server is running on http://localhost:30000");
+  app.listen(27017, () => {
+  console.log("Server is running on http://localhost:27017");
   });
 })
 .catch((err) => {

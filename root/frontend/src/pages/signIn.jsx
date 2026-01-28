@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import GoogleButton from "react-google-button";
 import { handleEmailSignIn, handleSignInViaPopUp } from "../auth/authenticate";
+import TicketImage from "../assets/social.webp";
 
 export default function SignInPage(){
     const [email, setEmail] = useState("");
@@ -20,7 +21,7 @@ export default function SignInPage(){
    const handleEmailSignInOnClick = async () => {
         try {
             await handleEmailSignIn(email, password);
-            navigate("/Hello-World");
+            navigate("/");
         } catch (e) {
             setError(e.message);
         }
@@ -28,12 +29,16 @@ export default function SignInPage(){
 
    const handleGoogleSignInOnClick = async () => {
         await handleSignInViaPopUp();
-        navigate("/Hello-World");
+        navigate("/");
     }
 
     return(
         <>
-            <div className="flex flex-col justify-center items-center gap-8 h-screen w-screen p-18 shadow-md shadow-gray-500 rounded-xl">
+            <div className="flex flex-row justify-center items-center h-screen w-screen ">
+                <div>
+                <img src={TicketImage} alt="Tickets" className="h-screen w-4/5 object-cover"/>
+            </div>
+            <div className="flex flex-col justify-center items-center gap-8 h-screen w-auto mr-30">
                 <input type="email" name="email" id="email" placeholder="Email Address"
                  required value={email} onChange={handleEmailChange}
                  className="h-12 w-120 border rounded-full" />
@@ -49,6 +54,7 @@ export default function SignInPage(){
                  {/* className="text-blue-700">Create Account</Link></p> */}
                 <GoogleButton onClick={handleGoogleSignInOnClick} /> 
             </div >
+            </div>
             
             
         </>

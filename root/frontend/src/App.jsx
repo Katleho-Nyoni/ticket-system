@@ -10,22 +10,29 @@ import SocialMediaApp from './pages/SocialMediaApp';
 import LayOut from './pages/TicketSystem';
 import VideoShorts from './pages/VideoShorts';
 import VideoShortsLoader from './loaders/VideoShortsLoader';
+import UserProfilePage from './pages/userProfile';
+import VideoShortsById from './pages/VideoShortsById';
+import NotFoundPage from './pages/NotFound';
 
 const routes = [{
-  path: '/', element: <HomePage /> },{
+  path: '/', element: <HomePage />, errorElement: <NotFoundPage /> },{
   path: 'user/login', element: <SignInPage /> },{
   path: '/weather-app', element: <WeatherApp /> },{
   path: '/social-media', element: <SocialMediaApp /> },{
-  path: '/video-shorts' , element: <VideoShorts />, hydrateFallback: VideoShortsLoader },{
+  path: '/video-shorts' , element: <VideoShorts />, HydrateFallbackElement: VideoShortsLoader },{
+  path: '/video-shorts/:id', element: <VideoShortsById /> },{
   path: '/ticket-system', element: <LayOut />,
   children: [{
   path: 'admin/login', element: <AdminDashboardPage /> },{
-  path: 'log/ticket', element: <TicketForm /> }
+  path: 'log/ticket', element: <TicketForm /> },{
+  path: 'profile', element: <UserProfilePage />
+  }
   ]
 }];
 
 const router = createBrowserRouter(routes);
-function App() {
+
+export default function App() {
 
   return (
     <>
@@ -34,4 +41,3 @@ function App() {
   )
 }
 
-export default App

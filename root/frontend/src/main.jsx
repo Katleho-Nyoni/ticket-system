@@ -6,23 +6,24 @@ import "firebase/app"
 import "firebase/auth"
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from 'firebase/auth'
+import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBOmFKYokDt_1ETFj_X2KoNDJNERZffgJI",
-  authDomain: "ticketsystem-d8beb.firebaseapp.com",
-  projectId: "ticketsystem-d8beb",
-  storageBucket: "ticketsystem-d8beb.firebasestorage.app",
-  messagingSenderId: "381712326260",
-  appId: "1:381712326260:web:fe8062264c5cbdb1497b21",
-  measurementId: "G-X2WZFEEZVP"
+  apiKey: "AIzaSyAxDxIih_c5D13gUA_MLJMXQVoRXqxQMv4",
+  authDomain: "an-app-of-apps.firebaseapp.com",
+  projectId: "an-app-of-apps",
+  storageBucket: "an-app-of-apps.firebasestorage.app",
+  messagingSenderId: "610362206722",
+  appId: "1:610362206722:web:6b5855c16f6ddb342b151b",
+  measurementId: "G-1CL6E6RY7Y"
 };
 
 const app = initializeApp(firebaseConfig);
-// const analytics = getAnalytics(app);
+const analytics = getAnalytics(app);
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 
-export { auth, googleProvider };
+export { auth, googleProvider, analytics };
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

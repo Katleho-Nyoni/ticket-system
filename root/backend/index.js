@@ -1,9 +1,9 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-// import mongoose from 'mongoose';
+import mongoose from 'mongoose';
 // import rate from 'express-rate-limit';
-// import Ticket from './models/tickets.model';
+import Ticket from './models/tickets.model.js';
 
 dotenv.config();
 
@@ -66,19 +66,30 @@ app.listen(3000, () => {
 });
 
 /* Ticket Management System Endpoints */
-// app.route('/api/ts/tickets')
+app.route('/api/ts/tickets')
+    .get(async (req,res) => {
+        try {
+            const tickets = await Ticket.find();
+            // const tickets = await Db.collection('tickets').find({}).toArray();
+            console.log(tickets);
+            res.status(200).json(tickets);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+        
+    });
 // .post()
 // .get()
 // .put()
 // .delete();
 
-/* mongoose.connect(process.env.MONGO_URI)
+mongoose.connect(process.env.MONGO_URI)
 .then(() => {
   console.log("Connected to MongoDB");
-  app.listen(27017, () => {
-  console.log("Server is running on http://localhost:27017");
+  app.listen(27027, () => {
+  console.log("Server is running on http://localhost:27027");
   });
 })
 .catch((err) => {
   console.error("Error connecting to MongoDB: ", err);
-}); */
+});

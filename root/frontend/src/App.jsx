@@ -13,6 +13,7 @@ import VideoShortsLoader from './loaders/VideoShortsLoader';
 import UserProfilePage from './pages/userProfile';
 import VideoShortsById from './pages/VideoShortsById';
 import NotFoundPage from './pages/NotFound';
+import { fetchTickets } from './pages/AdminDashboard';
 
 const routes = [{
   path: '/', element: <HomePage />, errorElement: <NotFoundPage /> },{
@@ -23,7 +24,7 @@ const routes = [{
   path: '/video-shorts/:id', element: <VideoShortsById /> },{
   path: '/ticket-system', element: <LayOut />,
   children: [{
-  path: 'admin/login', element: <AdminDashboardPage /> },{
+  path: 'admin/login', element: <AdminDashboardPage />, loader: fetchTickets },{
   path: 'log/ticket', element: <TicketForm /> },{
   path: 'profile', element: <UserProfilePage />
   }

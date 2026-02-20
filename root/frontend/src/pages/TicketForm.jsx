@@ -23,7 +23,7 @@ export default function TicketForm(){
                     <input type="email" name="employeeEmail" value={user.email} hidden />
             
                     <summary className="list-none ">
-                    <select name="issueType" /*value={issueType}*/  id="software-hardware">
+                    <select name="issueType" /*value={issueType}*/>
                         <option value="">default</option>
                         <option value="hardware">Hardware</option>
                         <option value="software">Software</option>

@@ -1,8 +1,10 @@
 // import { useState } from "react";
 import axios from "axios";
 import { Form } from "react-router-dom";
+import { useUser } from "../auth/authenticate";
 
 export default function TicketForm(){
+    const { isLoading, user } = useUser();
     // [employeeName, setName] = useState("");
     // [department, setDepartment] = useState("");
     // [issueType, setIssueType] = useState("");
@@ -17,7 +19,8 @@ export default function TicketForm(){
             <div className="flex flex-col justify-center items-center m-auto mt-30 gap-4 h-70 w-170">
                 <h1 className="text-3xl font-bold">TICKET LOGGER</h1>
                 <Form className="flex flex-col justify-center gap-4 rounded ">
-                    <input type="text" id="name" name="name" placeholder="Employee Name" required className="mt-6 border border-blue-600 py-2 px-18 rounded"/>
+                    <input type="text" name="name" value={user.displayName} hidden />
+                    <input type="email" name="email" value={user.email} hidden />
             
                     <summary className="list-none ">
                     <select name="software-hardware" /*value={issueType}*/  id="software-hardware">

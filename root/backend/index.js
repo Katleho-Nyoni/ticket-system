@@ -77,8 +77,15 @@ app.route('/api/ts/tickets')
             res.status(500).json({ error: error.message });
         }
         
-    });
-// .post()
+    })
+.post(async (req,res) => {
+    try {
+        const ticket = await Ticket.create(req.body);
+        res.status(200).json(ticket);
+    } catch (error) {
+       res.status(500).json({ error: error.message }); 
+    }
+});
 // .get()
 // .put()
 // .delete();

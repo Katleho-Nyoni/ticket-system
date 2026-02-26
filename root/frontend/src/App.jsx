@@ -4,7 +4,7 @@ import Navigation from './pages/Nav';
 import HomePage from './pages/Home';
 import AdminDashboardPage from './pages/AdminDashboard';
 import SignInPage from './pages/signIn';
-import TicketForm from './pages/TicketForm';
+import TicketForm, { ticketFormAction } from './pages/TicketForm';
 import WeatherApp from './pages/WeatherApp';
 import SocialMediaApp from './pages/SocialMediaApp';
 import LayOut from './pages/TicketSystem';
@@ -28,7 +28,7 @@ const routes = [{
   path: '/ticket-system', element: <LayOut />,
     children: [{
     path: 'admin/login', element: <AdminDashboardPage />, loader: fetchTickets },{
-    path: 'log/ticket', element: <TicketForm /> },{
+    path: 'log/ticket', element: <TicketForm />, action: ticketFormAction },{
     path: 'profile', element: <UserProfilePage />
     }]
   }]

@@ -1,3 +1,4 @@
+import {Helmet} from 'react-helmet'
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import GoogleButton from "react-google-button";
@@ -34,6 +35,10 @@ export default function SignInPage(){
 
     return(
         <>
+            <Helmet>
+                <title>Sign In | App of Apps</title>
+            </Helmet>
+
             <div className="flex flex-row justify-center items-center h-screen w-screen ">
                 <div>
                 <img src={TicketImage} alt="Tickets" className="h-screen w-4/5 object-cover"/>

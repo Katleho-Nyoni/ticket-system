@@ -1,3 +1,4 @@
+import {Helmet} from 'react-helmet'
 import { Link } from "react-router-dom";
 import { TransparentNav } from "./Nav";
 
@@ -5,6 +6,10 @@ export default function SocialMediaApp(){
 
     return(
         <>  
+            <Helmet>
+                <title>Social Media App | App of Apps</title>
+            </Helmet>
+
             <TransparentNav />
             <div className="bg-[url(/src/assets/social.webp)] bg-center bg-cover">
                 <div className="h-screen w-auto flex flex-col justify-center items-center gap-6">

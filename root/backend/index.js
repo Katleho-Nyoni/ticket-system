@@ -2,20 +2,70 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-// import rate from 'express-rate-limit';
+import admin from 'firebase-admin';
+import helmet from 'helmet';
+import fs from 'fs';
+import rateLimit from 'express-rate-limit';
 import Ticket from './models/tickets.model.js';
 
 dotenv.config();
 
+// const credentials = JSON.parse(
+//     fs.readFileSync('./serviceAccount.json')
+// );
+
+// admin.initializeApp({
+//     credential: admin.credential.cert(credentials)
+// });
+
+
 const app = express();
 
+app.use(helmet({
+    contentSecurityPolicy: false,
+    xDownloadOptions: false,
+}));
+
+const limiter = rateLimit({
+    windowMs: 10 * 60 * 1000, 
+    limit: 100, 
+    delayMs: 0, 
+    legacyHeaders: false,    
+});
+
+app.use(limiter);
+
+// app.use(cors());
 app.use(cors({
     origin: 'http://localhost:5173',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    // methods: ['GET', 'POST'],
     // credentials: true,
 }));
 
-app.use(express.json());export default
+app.use(express.json());
+
+// app.use(async function (req, res, next) {
+//     const { authtoken } = req.headers;
+    
+//     if (authtoken){
+//         try {
+//             const user = await admin.auth().verifyIdToken(authtoken);
+//             req.user = user;
+//             console.log(user);
+//         next();
+//         } catch (error) {
+//             res.sendStatus(401);
+//             console.error(error);
+//         }
+//     } else {
+//         res.sendStatus(403);
+//     }
+
+// });
+
+// app.get('/', (req, res) => {
+//     res.sendStatus(200)
+// })
 
 /* Weather App Endpoint */
 app.get('/API/weather', async (req, res) => {
@@ -61,9 +111,7 @@ app.get('/API/video', async (req,res) => {
     }
 })
 
-app.listen(3000, () => {
-    console.log('Server is running on port 30000');
-});
+
 
 /* Ticket Management System Endpoints */
 app.route('/api/ts/tickets')
@@ -74,27 +122,34 @@ app.route('/api/ts/tickets')
             console.log(tickets);
             res.status(200).json(tickets);
         } catch (error) {
-            res.status(500).json({ error: error.message });
+            return res.status(500).json({error: error.message});
         }
         
     })
-.post(async (req,res) => {
-    try {
-        const ticket = await Ticket.create(req.body);
-        res.status(200).json(ticket);
-    } catch (error) {
-       res.status(500).json({ error: error.message }); 
-    }
+    .post(async (req,res) => {
+        try {
+            const ticketEntry = req.body;
+            console.log(ticketEntry);
+            const ticket = new Ticket(ticketEntry);
+            await ticket.save();
+            res.status(200).json(ticket);
+        } catch (error) {
+            return res.status(500).json({ error: error.message }); 
+        }
 });
 // .get()
 // .put()
 // .delete();
 
+app.listen(3000, () => {
+    console.log('Server is running on port 3000');
+});
+
 mongoose.connect(process.env.MONGO_URI)
 .then(() => {
   console.log("Connected to MongoDB");
-  app.listen(27027, () => {
-  console.log("Server is running on http://localhost:27027");
+  app.listen(27000, () => {
+  console.log("Server is running on http://localhost:27000");
   });
 })
 .catch((err) => {

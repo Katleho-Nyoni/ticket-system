@@ -1,8 +1,9 @@
+import {Helmet} from 'react-helmet'
 import { useLoaderData } from "react-router-dom";
 
 export const fetchTickets = async () => {
     try {
-      const response = await fetch('http://127.0.0.1:27027/api/ts/tickets');
+      const response = await fetch('http://127.0.0.1:27000/api/ts/tickets');
       const results = await response.json();
       return results;
     } catch (err) {
@@ -17,7 +18,7 @@ export default function AdminDashboardPage() {
   const result = useLoaderData();
   return (
     <>
-    <div className="h-screen flex flex-col gap-20 items-center">
+    <div className="max-h-screen flex flex-col gap-20 items-center">
       <div className="stats shadow">
         <div className="stat place-items-center">
           <div className="stat-title">Total Tickets</div>

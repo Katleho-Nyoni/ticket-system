@@ -25,7 +25,7 @@ export default function Navigation() {
         </nav>
         <nav className="flex flex-col justify-items-end gap-12  ml-2">
             <Link to="/ticket-system/profile" className="font-bold flex flex-row gap-4"> <CgProfile className="size-5" /> Profile</Link>
-            <button  className="font-bold flex flex-row gap-4" onClick={handleSignOut}> <PiSignOut className="size-5"  /> Sign Out</button>
+            <button  className="font-bold flex flex-row gap-4 cursor-pointer" onClick={handleSignOut}> <PiSignOut className="size-5"  /> Sign Out</button>
         </nav>
       </div>
     </>
